@@ -2,8 +2,6 @@ name: YouTube Shorts Live
 
 on:
   workflow_dispatch:
-  schedule:
-    - cron: '0 */6 * * *'
 
 jobs:
   stream:
@@ -17,4 +15,5 @@ jobs:
 
       - name: Start Streaming
         run: |
-          ffmpeg -re -loop 1 -i image-live.png -f lavfi -i anullsrc -c:v libx264 -preset ultrafast -tune stillimage -pix_fmt yuv420p -g 60 -b:v 2500k -c:a aac -ar 44100 -b:a 128k -f flv "rtmp://a.rtmp.youtube.com/live2/q1w2e3r4t5y6u7i8o9p0"
+          ffmpeg -re -f lavfi -i anullsrc -loop 1 -i image-live.png -c:v libx264 -preset ultrafast -tune stillimage -pix_fmt yuv420p -g 60 -b:v 2500k -c:a aac -ar 44100 -b:a 128k -f flv "rtmp://a.rtmp.youtube.com/live2/SIZNING_KALITINGIZ"
+0
