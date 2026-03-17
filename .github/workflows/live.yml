@@ -1,7 +1,7 @@
 name: YouTube Shorts Live
 
 on:
-  workflow_dispatch:
+  workflow_dispatch: # Bu qator efir faqat qo'lda yoqilishini ta'minlaydi
 
 jobs:
   stream:
@@ -15,5 +15,4 @@ jobs:
 
       - name: Start Streaming
         run: |
-          # Bu buyruq efirni to'xtatmasdan, rasm va ovozni qayta-qayta aylantiradi
-          ffmpeg -re -stream_loop -1 -i image-live.png -f lavfi -i anullsrc -c:v libx264 -preset ultrafast -tune stillimage -pix_fmt yuv420p -g 60 -b:v 2500k -shortest -f flv "rtmp://a.rtmp.youtube.com/live2/q1w2e3r4t5y6u7i8o9p0"
+          ffmpeg -re -stream_loop -1 -i image-live.png -f lavfi -i anullsrc -c:v libx264 -preset ultrafast -tune stillimage -pix_fmt yuv420p -g 60 -b:v 2500k -shortest -f flv "rtmp://a.rtmp.youtube.com/live2/${{ secrets.STREAM_KEY }}"
